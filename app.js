@@ -98,7 +98,7 @@ window.onscroll = function(){
     efectoHabilidades();
 }
 
-let idiomaEspañol = false
+let idiomaEspañol = true
 let archivoJson = "./englishJson.json"
 let idiomaJson = {}
 
@@ -121,9 +121,9 @@ async function loadJSON() {
   }
   
 
-async function cargarNavBar() {
+function cargarNavBar() {
 
-    await loadJSON() 
+   
     let nav = document.getElementById('nav')
     const navJson = idiomaJson.navBar
     nav.innerHTML = `
@@ -137,8 +137,9 @@ async function cargarNavBar() {
 }
 
 window.onload = async function() {
-    console.log('cargando navbar')
-    await cargarNavBar()
+
+    await loadJSON() 
+    cargarNavBar()
 }
 
 /* const btn = document.getElementById('cmd')
