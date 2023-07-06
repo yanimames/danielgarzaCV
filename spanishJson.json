@@ -1,0 +1,10 @@
+{
+    "navBar": {
+        "home": "Inicio",
+        "about": "Sobre mi",
+        "skills": "habilidades",
+        "summary": "resumen",
+        "contact": "Contacto"
+    }
+
+}

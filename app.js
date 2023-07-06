@@ -98,6 +98,48 @@ window.onscroll = function(){
     efectoHabilidades();
 }
 
+let idiomaEspañol = false
+let archivoJson = "./englishJson.json"
+let idiomaJson = {}
+
+async function loadJSON() {
+    try {
+        if (idiomaEspañol) {
+            archivoJson = "./spanishJson.json"
+        }
+      const response = await fetch(archivoJson);
+      if (!response.ok) {
+        throw new Error('Error: ' + response.status);
+      }
+      const data = await response.json();
+      // Do something with the loaded JSON data
+      idiomaJson = data
+    } catch (error) {
+      // Handle any errors that occurred during the fetch request
+      console.error(error);
+    }
+  }
+  
+
+async function cargarNavBar() {
+
+    await loadJSON() 
+    let nav = document.getElementById('nav')
+    const navJson = idiomaJson.navBar
+    nav.innerHTML = `
+    <a href="#inicio">${navJson.home}</a>
+    <a href="#sobremi">${navJson.about}</a>
+    <a href="#habilidades">${navJson.skills}</a>
+    <a href="#resumen">${navJson.summary}</a>
+    <a href="#contacto">${navJson.contact}</a>
+    `
+
+}
+
+window.onload = async function() {
+    console.log('cargando navbar')
+    await cargarNavBar()
+}
 
 /* const btn = document.getElementById('cmd')
 
